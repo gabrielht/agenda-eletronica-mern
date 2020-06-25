@@ -5,6 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && run build",
     "server": "nodemon server --inspect",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
