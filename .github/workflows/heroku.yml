@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Node.js CD
 
 on:
   push:
@@ -18,3 +18,9 @@ jobs:
     - run: npm ci
     - run: npm run install-client
     - run: npm run build --if-present
+    - uses: akhileshns/heroku-deploy@v3.0.5 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "agenda-eletronica-tcc" #Must be unique in Heroku
+          heroku_email: "xgabrielhenrique@live.com"
+          docker_heroku_process_type: "" #OPTIONAL and DEFAULT - "web"
