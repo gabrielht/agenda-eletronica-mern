@@ -9,7 +9,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run install-client && npm run build",
     "server": "nodemon server --inspect",
-    "client": "npm start --prefix client",
+    "client": "npm --prefix start client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Gabriel Henrique",
