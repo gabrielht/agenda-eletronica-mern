@@ -6,6 +6,7 @@ import { AddCliente } from "./components/AddCliente";
 import { GlobalProvider } from "./context/GlobalState";
 
 import "./App.css";
+import { ComentarioList } from "./components/ComentarioList";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <div className="container">
         <ClienteList />
         <AddCliente />
+        <ComentarioList />
       </div>
     </GlobalProvider>
   );

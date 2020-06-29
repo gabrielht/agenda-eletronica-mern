@@ -1,17 +1,18 @@
-import React, { createContext, useReducer } from 'react';
-import AppReducer from './AppReducer';
-import axios from 'axios';
+import React, { createContext, useReducer } from "react";
+import AppReducer from "./AppReducer";
+import axios from "axios";
 
 // Initial state
 const initialState = {
-  clientes: [
-    {id:1, nome: "Joao", email:"joao@gmail.com"},
-    {id:2, nome: "Maria", email:"maria@gmail.com"},
-    {id:3, nome: "Enzo", email:"enzo@gmail.com"}
+  clientes: [],
+  comentarios: [
+    { id: 1, comentario: "Teste Comentario 1" },
+    { id: 2, comentario: "Teste Comentario 2" },
+    { id: 3, comentario: "Teste Comentario 3", valor: "195,90" },
   ],
   error: null,
-  loading: true
-}
+  loading: true,
+};
 
 // Create context
 export const GlobalContext = createContext(initialState);
@@ -20,13 +21,79 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  // Actions
+  async function getClientes() {
+    try {
+      const res = await axios.get("/api/v1/clientes");
 
-  return (<GlobalContext.Provider value={{
-    clientes: state.clientes,
-    error: state.error,
-    loading: state.loading,
-  }}>
-    {children}
-  </GlobalContext.Provider>);
-}
+      dispatch({
+        type: "GET_CLIENTES",
+        payload: res.data.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: "CLIENTES_ERROR",
+        payload: err.response.data.error,
+      });
+    }
+  }
+
+  async function addCliente(cliente) {
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+
+    try {
+      const res = await axios.post("/api/v1/clientes", cliente, config);
+      dispatch({
+        type: "ADD_CLIENTE",
+        payload: res.data.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: "CLIENTES_ERROR",
+        payload: err.response.data.error,
+      });
+    }
+  }
+
+  async function deleteCliente(id) {
+    try {
+      await axios.delete(`/api/v1/clientes/${id}`);
+      dispatch({
+        type: "DELETE_CLIENTE",
+        payload: id,
+      });
+    } catch (err) {
+      dispatch({
+        type: "CLIENTES_ERROR",
+        payload: err.response.data.error,
+      });
+    }
+  }
+
+  function selectCliente(cliente) {
+    dispatch({
+      type: "SELECT_CLIENTE",
+      payload: cliente,
+    });
+  }
+
+  return (
+    <GlobalContext.Provider
+      value={{
+        clientes: state.clientes,
+        comentarios: state.comentarios,
+        error: state.error,
+        loading: state.loading,
+        getClientes,
+        addCliente,
+        deleteCliente,
+        selectCliente,
+      }}
+    >
+      {children}
+    </GlobalContext.Provider>
+  );
+};

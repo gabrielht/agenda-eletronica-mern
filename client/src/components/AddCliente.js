@@ -1,13 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
 
 export const AddCliente = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
 
+  const { addCliente } = useContext(GlobalContext);
+
+  function gerarId() {
+    return Math.floor(Math.random() * 100);
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const newCliente = {
+      id: gerarId(),
+      nome,
+      email,
+    };
+
+    debugger
+    addCliente(newCliente);
+  };
+
   return (
     <div>
       <h3>Add new transaction</h3>
-      <form>
+      <form onSubmit={onSubmit}>
         <div>
           <label htmlFor="nome">Nome</label>
           <input

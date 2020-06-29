@@ -1,9 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { Cliente } from "./Cliente";
 
 export const ClienteList = () => {
-  const { clientes } = useContext(GlobalContext);
+  const { clientes, getClientes } = useContext(GlobalContext);
+
+  useEffect(() => {
+    getClientes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div>
       <h3>Clientes</h3>
