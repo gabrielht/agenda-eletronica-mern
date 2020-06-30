@@ -4,6 +4,7 @@ import axios from "axios";
 
 // Initial state
 const initialState = {
+  selectedCliente: {},
   clientes: [],
   comentarios: [
     { id: 1, comentario: "Teste Comentario 1" },
@@ -74,6 +75,7 @@ export const GlobalProvider = ({ children }) => {
   }
 
   function selectCliente(cliente) {
+    console.log('SELECTED CLIENTE', {cliente})
     dispatch({
       type: "SELECT_CLIENTE",
       payload: cliente,
@@ -84,6 +86,7 @@ export const GlobalProvider = ({ children }) => {
     <GlobalContext.Provider
       value={{
         clientes: state.clientes,
+        selectedCliente: state.selectedCliente,
         comentarios: state.comentarios,
         error: state.error,
         loading: state.loading,

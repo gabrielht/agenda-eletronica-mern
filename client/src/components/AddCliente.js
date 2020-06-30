@@ -26,7 +26,7 @@ export const AddCliente = () => {
 
   return (
     <div>
-      <h3>Add new transaction</h3>
+      <h3>Adione um novo Cliente</h3>
       <form onSubmit={onSubmit}>
         <div>
           <label htmlFor="nome">Nome</label>

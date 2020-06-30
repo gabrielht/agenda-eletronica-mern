@@ -23,6 +23,11 @@ export default (state, action) => {
         ...state,
         error: action.payload,
       };
+    case "SELECT_CLIENTE":
+      return {
+        ...state,
+        selectedCliente: action.payload
+      }
     default:
       return state;
   }

@@ -15,9 +15,9 @@ export const ClienteList = () => {
       <h3>Clientes</h3>
       <ul>
         {clientes.map((cliente) => (
-          <Cliente key={cliente.id} cliente={cliente} />
+          <Cliente key={cliente._id} cliente={cliente}/>
         ))}
-      </ul>
+      </ul>      
     </div>
   );
 };
