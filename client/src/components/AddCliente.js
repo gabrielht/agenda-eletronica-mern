@@ -4,6 +4,7 @@ import { GlobalContext } from "../context/GlobalState";
 export const AddCliente = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
+  const [telefone, setTelefone] = useState("");
 
   const { addCliente } = useContext(GlobalContext);
 
@@ -20,7 +21,7 @@ export const AddCliente = () => {
       email,
     };
 
-    debugger
+    debugger;
     addCliente(newCliente);
   };
 
@@ -28,25 +29,23 @@ export const AddCliente = () => {
     <div>
       <h3>Adione um novo Cliente</h3>
       <form onSubmit={onSubmit}>
-        <div>
-          <label htmlFor="nome">Nome</label>
-          <input
-            type="nome"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            placeholder="Digite o nome..."
-          />
+        <div className="form-row col-md-12">
+          <div className="form-group col-md-6">
+            <label htmlFor="nome">Nome</label>
+            <input id="nome" className="form-control" type="text" name="" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Nome" />
+          </div>
+          <div className="form-group col-md-6">
+            <label htmlFor="email">Email</label>
+            <input id="email" className="form-control" type="email" name="" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+          </div>
         </div>
-        <div>
-          <label htmlFor="email">E-mail</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Digite o email..."
-          />
+        <div className="form-group col-md-12">
+          <label htmlFor="telefone">Telefone</label>
+          <input id="telefone" className="form-control" type="tel" name="" value={telefone} onChange={(e) => setTelefone(e.target.value)} placeholder="Telefone" />
         </div>
-        <button>Adicionar Cliente</button>
+        <button type="submit" className="btn btn-primary">
+          Adicionar Cliente
+        </button>
       </form>
     </div>
   );

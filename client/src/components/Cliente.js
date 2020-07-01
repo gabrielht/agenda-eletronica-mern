@@ -17,7 +17,7 @@ export const Cliente = ({ cliente }) => {
       >
         {cliente.nome} <span>{cliente.email}</span>
         <button
-          className="btn btn-outline-danger"
+          className="btn btn-danger"
           onClick={() => deleteCliente(cliente._id)}
         >
           x
