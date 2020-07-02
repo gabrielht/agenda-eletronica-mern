@@ -6,11 +6,7 @@ import axios from "axios";
 const initialState = {
   selectedCliente: {},
   clientes: [],
-  comentarios: [
-    { id: 1, comentario: "Teste Comentario 1" },
-    { id: 2, comentario: "Teste Comentario 2" },
-    { id: 3, comentario: "Teste Comentario 3", valor: "195,90" },
-  ],
+  comentarios: [],
   error: null,
   loading: true,
 };
@@ -81,6 +77,22 @@ export const GlobalProvider = ({ children }) => {
       payload: cliente,
     });
   }
+  
+  async function getComentarios(cliente) {
+    try {
+      const res = await axios.get(`/api/v1/comentarios/${cliente._id}`);
+
+      dispatch({
+        type: "GET_COMENTARIOS",
+        payload: res.data.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: "CLIENTES_ERROR",
+        payload: err.response.data.error,
+      });
+    }
+  }
 
   return (
     <GlobalContext.Provider
@@ -94,6 +106,7 @@ export const GlobalProvider = ({ children }) => {
         addCliente,
         deleteCliente,
         selectCliente,
+        getComentarios
       }}
     >
       {children}

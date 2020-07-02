@@ -18,16 +18,21 @@ export default (state, action) => {
         ...state,
         clientes: [...state.clientes, action.payload],
       };
-    case "CLIENTE_ERROR":
-      return {
-        ...state,
-        error: action.payload,
-      };
     case "SELECT_CLIENTE":
       return {
         ...state,
         selectedCliente: action.payload
       }
+    case "GET_COMENTARIOS":
+      return {
+        ...state,
+        comentarios: action.payload
+      }
+    case "CLIENTE_ERROR":
+      return {
+        ...state,
+        error: action.payload,
+      };    
     default:
       return state;
   }

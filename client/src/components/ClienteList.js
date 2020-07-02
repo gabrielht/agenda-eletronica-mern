@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { Cliente } from "./Cliente";
+import { AddCliente } from "./AddCliente";
 
 export const ClienteList = () => {
   const { clientes, getClientes } = useContext(GlobalContext);
@@ -17,7 +18,8 @@ export const ClienteList = () => {
         {clientes.map((cliente) => (
           <Cliente key={cliente._id} cliente={cliente}/>
         ))}
-      </ul>      
+      </ul>
+      <AddCliente />     
     </div>
   );
 };
