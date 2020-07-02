@@ -94,6 +94,27 @@ export const GlobalProvider = ({ children }) => {
     }
   }
 
+  async function addComentario(cliente) {
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+
+    try {
+      const res = await axios.post("/api/v1/comentarios", cliente, config);
+      dispatch({
+        type: "ADD_COMENTARIO",
+        payload: res.data.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: "CLIENTES_ERROR",
+        payload: err.response.data.error,
+      });
+    }
+  }
+
   return (
     <GlobalContext.Provider
       value={{

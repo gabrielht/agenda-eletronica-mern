@@ -7,7 +7,7 @@ router
   .post(addComentario);
 
 router
-  .route('/:createdBy')
+  .route('/:cliente_id')
   .get(getComentarioById)
   .delete(deleteCliente);
 

@@ -1,7 +1,7 @@
 const Cliente = require('../models/Cliente');
 
-// @desc    Get all Cliente
-// @route   GET /api/v1/cliente
+// @desc    Get all Clientes
+// @route   GET /api/v1/clientes
 // @access  Public
 exports.getClientes = async (req, res, next) => {
   try {
@@ -21,7 +21,7 @@ exports.getClientes = async (req, res, next) => {
 }
 
 // @desc    Add Cliente
-// @route   POST /api/v1/cliente
+// @route   POST /api/v1/clientes
 // @access  Public
 exports.addCliente = async (req, res, next) => {
   try {
@@ -51,7 +51,7 @@ exports.addCliente = async (req, res, next) => {
 }
 
 // @desc    Delete Cliente
-// @route   DELETE /api/v1/cliente/:id
+// @route   DELETE /api/v1/clientes/:id
 // @access  Public
 exports.deleteCliente = async (req, res, next) => {
   try {

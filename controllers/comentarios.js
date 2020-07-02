@@ -1,11 +1,11 @@
 const Comentario = require('../models/Comentario');
 
-// @desc    Get all Cliente
-// @route   GET /api/v1/clientes
+// @desc    Get all Comentarios
+// @route   GET /api/v1/comentarios
 // @access  Public
 exports.getComentarios = async (req, res, next) => {
   try {
-    const comentarios = await Comentario.find().populate('createdBy');
+    const comentarios = await Comentario.find().populate('cliente_id');
 
     return res.status(200).json({
       success: true,
@@ -20,13 +20,13 @@ exports.getComentarios = async (req, res, next) => {
   }
 }
 
-// @desc    Get all Cliente
-// @route   GET /api/v1/clientes
+// @desc    Get one Comentario
+// @route   GET /api/v1/comentarios/:id
 // @access  Public
 exports.getComentarioById = async (req, res, next) => {
   try {
-    const { createdBy } = req.params
-    const comentarios = await Comentario.find({createdBy});
+    const { cliente_id } = req.params
+    const comentarios = await Comentario.find({cliente_id});
 
     return res.status(200).json({
       success: true,
@@ -41,12 +41,12 @@ exports.getComentarioById = async (req, res, next) => {
   }
 }
 
-// @desc    Add Cliente
-// @route   POST /api/v1/clientes
+// @desc    Add Comentario
+// @route   POST /api/v1/comentarios
 // @access  Public
 exports.addComentario = async (req, res, next) => {
   try {
-    const { comentario, createdBy } = req.body;
+    const { cliente_id , comentario } = req.body;
 
     const _comentario = await Comentario.create(req.body);
   
@@ -71,6 +71,7 @@ exports.addComentario = async (req, res, next) => {
   }
 }
 
+// TODO: arummar esse metodo pra ser um deleteComentario
 // @desc    Delete Cliente
 // @route   DELETE /api/v1/cliente/:id
 // @access  Public

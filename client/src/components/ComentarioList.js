@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { Comentario } from "./Comentario";
+import { AddComentario } from "./AddComentario";
 
 export const ComentarioList = ({ cliente }) => {
   const { comentarios, getComentarios } = useContext(GlobalContext);
@@ -19,6 +20,8 @@ export const ComentarioList = ({ cliente }) => {
           <Comentario key={comentario.id} comentario={comentario} />
         )) : "Ainda nao temos nenhum comentario :("}
       </ul>
+      <hr/>
+      <AddComentario/>
     </div>
   );
 };
