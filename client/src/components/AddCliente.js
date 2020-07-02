@@ -8,10 +8,10 @@ export const AddCliente = () => {
 
   const { addCliente } = useContext(GlobalContext);
 
-  function clearForm(){
-    setNome('')
-    setEmail('')
-    setTelefone('')
+  function clearForm() {
+    setNome("");
+    setEmail("");
+    setTelefone("");
   }
 
   const onSubmit = (e) => {
@@ -24,7 +24,7 @@ export const AddCliente = () => {
 
     debugger;
     addCliente(newCliente);
-    clearForm()
+    clearForm();
   };
 
   return (
@@ -34,12 +34,8 @@ export const AddCliente = () => {
         <div className="form-row col-md-12">
           <div className="form-group col-md-6">
             <label htmlFor="nome">Nome</label>
-            <input id="nome" className="form-control" type="text" name="" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Nome"
-            required />
+            <input id="nome" className="form-control" type="text" name="" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Nome" required />
           </div>
-          <div class="invalid-feedback">
-      Please enter a message in the textarea.
-    </div>
           <div className="form-group col-md-6">
             <label htmlFor="email">Email</label>
             <input id="email" className="form-control" type="email" name="" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
@@ -47,8 +43,7 @@ export const AddCliente = () => {
         </div>
         <div className="form-group col-md-12">
           <label htmlFor="telefone">Telefone</label>
-          <input id="telefone" className="form-control" type="tel" name="" value={telefone} onChange={(e) => setTelefone(e.target.value)} placeholder="Telefone"
-          required />
+          <input id="telefone" className="form-control" type="tel" name="" value={telefone} onChange={(e) => setTelefone(e.target.value)} placeholder="Telefone" required />
         </div>
         <button type="submit" className="btn btn-primary">
           Adicionar Cliente
