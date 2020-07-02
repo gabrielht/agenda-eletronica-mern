@@ -8,6 +8,7 @@ export const ComentarioList = ({ cliente }) => {
   useEffect(() => {
     if (!cliente._id) return
     else getComentarios(cliente);
+    // eslint-disable-next-line
   }, []);
 
   return (
