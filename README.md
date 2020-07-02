@@ -8,9 +8,10 @@ edit config.env
 ```
 
 ```
+ # QUICK START
  npm install
- cd client npm install
- cd ..
+ npm run install-client
+ npm run dev
  
  # Run front and backend
  npm run dev
@@ -24,6 +25,9 @@ edit config.env
  # Build client
  cd client
  npm run build
+ 
+ ou
+ npm run install-client
  
  # Prod
  npm start
