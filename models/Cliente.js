@@ -10,6 +10,10 @@ const ClienteSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Por favor adicione o email']
   },
+  telefone:{
+    type: String,
+    required: [true, 'Por favor adicione o telefone']
+  },
   createdAt: {
     type: Date,
     default: Date.now

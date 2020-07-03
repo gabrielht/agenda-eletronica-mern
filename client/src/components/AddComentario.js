@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
 export const AddComentario = () => {
-  const [tipo, setTipo] = useState("");
+  const [tipo_comentario, setTipoComentario] = useState("");
   const [valor, setValor] = useState("");
   const [comentario, setComentario] = useState("");
 
@@ -14,12 +14,10 @@ export const AddComentario = () => {
     
     const cliente = {
       cliente_id,
-      tipo,
+      tipo_comentario,
       valor,
       comentario,
     };
-
-    debugger
 
     addComentario(cliente)
   }
@@ -28,13 +26,13 @@ export const AddComentario = () => {
       <form onSubmit={onSubmit}>
         <div className="form-row">
           <div className="col">
-            <select value={tipo} onChange={(e) => setTipo(e.target.value)} className="form-control">
-              <option>Comentario</option>
-              <option>Atendimento</option>
+            <select value={tipo_comentario} onChange={(e) => setTipoComentario(e.target.value)} className="form-control">
+              <option value="1" selected>Comentario</option>
+              <option value="2">Atendimento</option>
             </select>
           </div> 
           <div className="col">
-            {tipo === 'Atendimento' ? <input id="valor" type="number" className="form-control" value={valor} onChange={(e) => setValor(e.target.value)} placeholder="Valor"></input> : <></>}
+            {tipo_comentario === '2' ? <input id="valor" type="number" className="form-control" value={valor} onChange={(e) => setValor(e.target.value)} placeholder="Valor"></input> : <></>}
           </div> 
           <div className="col-12">
             <textarea id="comentario" className="form-control" value={comentario} onChange={(e) => setComentario(e.target.value)} required placeholder="Comentario"></textarea>

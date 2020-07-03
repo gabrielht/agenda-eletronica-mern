@@ -20,6 +20,7 @@ export const AddCliente = () => {
     const newCliente = {
       nome,
       email,
+      telefone
     };
 
     debugger;

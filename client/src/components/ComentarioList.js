@@ -4,7 +4,7 @@ import { Comentario } from "./Comentario";
 import { AddComentario } from "./AddComentario";
 
 export const ComentarioList = ({ cliente }) => {
-  const { comentarios, getComentarios } = useContext(GlobalContext);
+  const { comentarios, getComentarios, selectedCliente } = useContext(GlobalContext);
 
   useEffect(() => {
     if (!cliente._id) return
@@ -21,7 +21,7 @@ export const ComentarioList = ({ cliente }) => {
         )) : "Ainda nao temos nenhum comentario :("}
       </ul>
       <div className="addComentario">
-        <AddComentario/>
+        {selectedCliente._id ? <AddComentario/> : ""}
       </div>
     </div>
   );

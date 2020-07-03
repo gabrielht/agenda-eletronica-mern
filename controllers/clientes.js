@@ -25,7 +25,7 @@ exports.getClientes = async (req, res, next) => {
 // @access  Public
 exports.addCliente = async (req, res, next) => {
   try {
-    const { text, amount } = req.body;
+    const { nome, email, telefone } = req.body;
 
     const cliente = await Cliente.create(req.body);
   
