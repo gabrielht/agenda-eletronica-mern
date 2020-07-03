@@ -20,8 +20,9 @@ export const ComentarioList = ({ cliente }) => {
           <Comentario key={comentario.id} comentario={comentario} />
         )) : "Ainda nao temos nenhum comentario :("}
       </ul>
-      <hr/>
-      <AddComentario/>
+      <div className="addComentario">
+        <AddComentario/>
+      </div>
     </div>
   );
 };

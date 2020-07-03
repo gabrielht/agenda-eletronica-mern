@@ -127,7 +127,8 @@ export const GlobalProvider = ({ children }) => {
         addCliente,
         deleteCliente,
         selectCliente,
-        getComentarios
+        getComentarios,
+        addComentario
       }}
     >
       {children}

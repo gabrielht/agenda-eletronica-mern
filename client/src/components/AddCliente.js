@@ -29,7 +29,6 @@ export const AddCliente = () => {
 
   return (
     <div>
-      <h3>Novo</h3>
       <form onSubmit={onSubmit}>
         <div className="form-row col-md-12">
           <div className="form-group col-md-6">

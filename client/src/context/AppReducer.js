@@ -28,6 +28,11 @@ export default (state, action) => {
         ...state,
         comentarios: action.payload
       }
+    case "ADD_COMENTARIO":
+      return {
+        ...state,
+        comentarios: [...state.comentarios, action.payload]
+      }
     case "CLIENTE_ERROR":
       return {
         ...state,
