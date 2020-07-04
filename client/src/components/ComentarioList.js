@@ -5,7 +5,7 @@ import { AddComentario } from "./AddComentario";
 
 export const ComentarioList = ({ cliente }) => {
   const { comentarios, getComentarios, selectedCliente } = useContext(GlobalContext);
-
+  
   useEffect(() => {
     if (!cliente._id) return
     else getComentarios(cliente);
@@ -13,11 +13,13 @@ export const ComentarioList = ({ cliente }) => {
   }, []);
 
   return (
+
+
     <div>
       <h3>Comentarios</h3>
       <ul>
         {comentarios.length !== 0 ? comentarios.map((comentario) => (
-          <Comentario key={comentario.id} comentario={comentario} />
+          <Comentario key={comentario._id} comentario={comentario} />
         )) : "Ainda nao temos nenhum comentario :("}
       </ul>
       <div className="addComentario">

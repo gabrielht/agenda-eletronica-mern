@@ -15,6 +15,10 @@ const ComentarioSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Por favor adicione o ID do TIPO do comentario']
   },
+  valor:{
+    type: Number,
+    default: 0
+  },
   createdAt: {
     type: Date,
     default: Date.now
