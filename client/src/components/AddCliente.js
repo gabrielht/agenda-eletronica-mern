@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
+import InputMask from 'react-input-mask';
 
 export const AddCliente = () => {
   const [nome, setNome] = useState("");
@@ -43,11 +44,13 @@ export const AddCliente = () => {
         </div>
         <div className="form-group col-md-12">
           <label htmlFor="telefone">Telefone</label>
-          <input id="telefone" className="form-control" type="tel" name="" value={telefone} onChange={(e) => setTelefone(e.target.value)} placeholder="Telefone" required />
+          <InputMask id="telefone" mask="(99) 99999-9999" alwaysShowMask={false} className="form-control" type="telefone" name="" value={telefone} onChange={(e) => setTelefone(e.target.value)} placeholder="Telefone"/>
         </div>
-        <button type="submit" className="btn btn-primary">
-          Adicionar Cliente
-        </button>
+        <div className="d-flex justify-content-center">
+          <button type="submit" className="btn btn-success">
+            Adicionar Cliente
+          </button>
+        </div>
       </form>
     </div>
   );

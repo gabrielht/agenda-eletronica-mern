@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
 export const AddComentario = () => {
-  const [tipo_comentario, setTipoComentario] = useState("");
+  const [tipo_comentario, setTipoComentario] = useState(1);
   const [valor, setValor] = useState("");
   const [comentario, setComentario] = useState("");
 
@@ -27,7 +27,7 @@ export const AddComentario = () => {
         <div className="form-row">
           <div className="col">
             <select value={tipo_comentario} onChange={(e) => setTipoComentario(e.target.value)} className="form-control">
-              <option value="1" selected>Comentario</option>
+              <option value="1">Comentario</option>
               <option value="2">Atendimento</option>
             </select>
           </div> 

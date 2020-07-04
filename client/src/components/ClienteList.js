@@ -4,13 +4,13 @@ import { Cliente } from "./Cliente";
 import { AddCliente } from "./AddCliente";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
-import $ from 'jquery'
+import {Collapse} from 'reactstrap'
 
 export const ClienteList = () => {
   const { clientes, getClientes } = useContext(GlobalContext);
-  const [Open, setOpen] = useState(false)  
-  
-  const toggle = () => setOpen(!Open)
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
   useEffect(() => {
     getClientes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -18,11 +18,10 @@ export const ClienteList = () => {
 
   return (
     <div>
-      <h3>Clientes <button type="button" onClick={toggle} className="btn btn-success"><FontAwesomeIcon icon={Open ? faMinus : faPlus } data-toggle="collapse" data-target="#contentId" aria-expanded="false"
-        aria-controls="contentId" /></button> </h3>
-        <div className="collapse" id="contentId">
-        <AddCliente />
-      </div>
+      <h3>Clientes <button type="button" onClick={toggle} className="btn btn-success"><FontAwesomeIcon icon={isOpen ? faMinus : faPlus } /></button></h3>
+        <Collapse isOpen={isOpen}>
+          <AddCliente />
+        </Collapse>
       <ul>
         {clientes.map((cliente) => (
           <Cliente key={cliente._id} cliente={cliente}/>

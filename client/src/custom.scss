@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 body {
-  background-color: $body-bg;
+  background-color: $light;
   color: $body-color;
   font-family: 'Lato', sans-serif;
   border-radius: 5px;
@@ -16,14 +16,14 @@ h1 {
 
 h2 {
   text-align: center;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid $black;
   padding-top: 15px;
   padding-bottom: 15px;
   margin: 0;
 }
 
 h3 {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid $black;
   padding-bottom: 10px;
   margin: 40px 0 10px;
   display: flex;
@@ -36,11 +36,25 @@ h4 {
 }
 
 .addComentario{
-  border-top: 1px solid #fff;
+  border-top: 1px solid $black;
   padding-top: 15px;
   margin-top: 15px;
 }
 
+.card-header {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.card-body{
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  .content{
+    display: flex;
+    flex-direction: column;
+  }
+}
 ul {
   padding: 0;
   list-style: none;
@@ -50,7 +64,7 @@ ul {
 
   li {
     cursor: pointer;
-    background-color: $primary;
+    background-color: $light-dark;
     padding: 15px;
     margin: 5px 0 0 0;
     justify-content: space-between;
@@ -60,7 +74,7 @@ ul {
   }
 
   .selected {
-    background-color: $secondary !important;
+    background-color: $dark !important;
     color: white;
   }
 }
