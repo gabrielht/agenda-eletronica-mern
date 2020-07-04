@@ -44,9 +44,11 @@ export const Login = () => {
   var login = function(){
     firebase.auth().signInWithEmailAndPassword(EmailLogin, SenhaLogin)
       .then(function(result) {
-          // console.log(result);
+        localStorage.setItem(STORAGE_KEY, 'KiltzFezFuncionar');
+        history.push('/')
+        window.location.reload(false)
       }).catch(function(error) {
-        // console.log(error);
+        alert('Login Invalido')
       });
   }
 
@@ -58,8 +60,11 @@ export const Login = () => {
     firebase.auth().signInWithPopup(provider).then(function(result) {
       var token = result.credential.accessToken;
       var user = result.user;
-      localStorage.setItem(STORAGE_KEY, 'KiltzFezFuncionar');
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
       history.push('/')
+      console.log(user.email);
+      console.log('-----');
+      console.log(result);
       window.location.reload(false)
     });
   }

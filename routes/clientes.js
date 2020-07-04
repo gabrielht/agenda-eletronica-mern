@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getClientes, addCliente, deleteCliente } = require('../controllers/clientes');
+const { getClientes, getClienteById ,addCliente, deleteCliente } = require('../controllers/clientes');
 router
   .route('/')
   .get(getClientes)
@@ -8,6 +8,7 @@ router
 
 router
   .route('/:id')
+  .get(getClienteById)
   .delete(deleteCliente);
 
 module.exports = router;

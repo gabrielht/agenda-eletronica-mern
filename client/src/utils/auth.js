@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'Bola8FazFuncionarPorFavor'
+var STORAGE_KEY = 'Usuario'
 
 const isLogged = () => !!localStorage.getItem(STORAGE_KEY)
 

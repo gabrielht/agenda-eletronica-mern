@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import InputMask from 'react-input-mask';
 import * as firebase from 'firebase';
+import {STORAGE_KEY} from '../utils/auth';
 
 const config = {
   apiKey: "AIzaSyBJrCTtEEnBG3SPcZo4ArUnJQZD4J9QPMU",
@@ -55,14 +56,17 @@ export const AddCliente = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
+    let user = JSON.parse(localStorage.getItem('Usuario'));
+    let createdBy = user.uid;
+    debugger;
     const newCliente = {
       nome,
       email,
-      telefone
+      telefone,
+      createdBy, 
     };
 
-    debugger;
+    // debugger;
     addCliente(newCliente);
     clearForm();
   };

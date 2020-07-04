@@ -7,12 +7,15 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 import {Collapse} from 'reactstrap'
 
 export const ClienteList = () => {
-  const { clientes, getClientes } = useContext(GlobalContext);
+  const { clientes, getClienteById } = useContext(GlobalContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
   useEffect(() => {
-    getClientes();
+    let user = JSON.parse(localStorage.getItem('Usuario'))
+    let createdBy = user.uid;
+
+    getClienteById(createdBy);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
