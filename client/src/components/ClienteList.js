@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { Cliente } from "./Cliente";
 import { AddCliente } from "./AddCliente";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
-import {Collapse} from 'reactstrap'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { Collapse } from "reactstrap";
 
 export const ClienteList = () => {
   const { clientes, getClienteById } = useContext(GlobalContext);
@@ -12,7 +12,7 @@ export const ClienteList = () => {
 
   const toggle = () => setIsOpen(!isOpen);
   useEffect(() => {
-    let user = JSON.parse(localStorage.getItem('Usuario'))
+    let user = JSON.parse(localStorage.getItem("Usuario"));
     let createdBy = user.uid;
 
     getClienteById(createdBy);
@@ -21,13 +21,18 @@ export const ClienteList = () => {
 
   return (
     <div>
-      <h3>Clientes <button type="button" onClick={toggle} className="btn btn-success"><FontAwesomeIcon icon={isOpen ? faMinus : faPlus } /></button></h3>
-        <Collapse isOpen={isOpen}>
-          <AddCliente />
-        </Collapse>
+      <h3>
+        Clientes{" "}
+        <button type="button" onClick={toggle} className="btn btn-success">
+          <FontAwesomeIcon icon={isOpen ? faMinus : faPlus} />
+        </button>
+      </h3>
+      <Collapse isOpen={isOpen}>
+        <AddCliente />
+      </Collapse>
       <ul>
         {clientes.map((cliente) => (
-          <Cliente key={cliente._id} cliente={cliente}/>
+          <Cliente key={cliente._id} cliente={cliente} />
         ))}
       </ul>
     </div>

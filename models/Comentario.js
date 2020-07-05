@@ -1,28 +1,28 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const ComentarioSchema = new mongoose.Schema({
   cliente_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Cliente',
-    required: [true, 'Por favor adicione o ID do cliente']
+    ref: "Cliente",
+    required: [true, "Por favor adicione o ID do cliente"],
   },
   comentario: {
     type: String,
     trim: true,
-    required: [true, 'Por favor adicione o comentario']
-  }, 
+    required: [true, "Por favor adicione o comentario"],
+  },
   tipo_comentario: {
     type: Number,
-    required: [true, 'Por favor adicione o ID do TIPO do comentario']
+    required: [true, "Por favor adicione o ID do TIPO do comentario"],
   },
-  valor:{
+  valor: {
     type: Number,
-    default: 0
+    default: 0,
   },
   createdAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model('Comentario', ComentarioSchema);
+module.exports = mongoose.model("Comentario", ComentarioSchema);

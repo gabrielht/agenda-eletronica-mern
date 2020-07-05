@@ -16,11 +16,9 @@ export const GlobalContext = createContext(initialState);
 
 // Provider component
 export const GlobalProvider = ({ children }) => {
-
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   async function getClienteById(createdBy) {
-
     try {
       const res = await axios.get(`/api/v1/clientes/${createdBy}`);
 
@@ -73,13 +71,13 @@ export const GlobalProvider = ({ children }) => {
   }
 
   function selectCliente(cliente) {
-    console.log('SELECTED CLIENTE', {cliente})
+    console.log("SELECTED CLIENTE", { cliente });
     dispatch({
       type: "SELECT_CLIENTE",
       payload: cliente,
     });
   }
-  
+
   async function getComentarios(cliente) {
     try {
       const res = await axios.get(`/api/v1/comentarios/${cliente._id}`);
@@ -130,7 +128,7 @@ export const GlobalProvider = ({ children }) => {
         deleteCliente,
         selectCliente,
         getComentarios,
-        addComentario
+        addComentario,
       }}
     >
       {children}

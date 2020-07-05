@@ -1,27 +1,27 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const ClienteSchema = new mongoose.Schema({
   nome: {
     type: String,
     trim: true,
-    required: [true, 'Por favor adicione o nome']
+    required: [true, "Por favor adicione o nome"],
   },
   email: {
     type: String,
-    required: [true, 'Por favor adicione o email']
+    required: [true, "Por favor adicione o email"],
   },
-  telefone:{
+  telefone: {
     type: String,
-    required: [true, 'Por favor adicione o telefone']
+    required: [true, "Por favor adicione o telefone"],
   },
-  createdBy:{
+  createdBy: {
     type: String,
-    required: [true, 'Tu nao ta logado irmao ????']
+    required: [true, "Tu nao ta logado irmao ????"],
   },
   createdAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model('Cliente', ClienteSchema);
+module.exports = mongoose.model("Cliente", ClienteSchema);

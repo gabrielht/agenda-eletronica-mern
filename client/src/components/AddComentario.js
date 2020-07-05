@@ -6,12 +6,12 @@ export const AddComentario = () => {
   const [valor, setValor] = useState("");
   const [comentario, setComentario] = useState("");
 
-  const { selectedCliente, addComentario } = useContext(GlobalContext)
+  const { selectedCliente, addComentario } = useContext(GlobalContext);
 
-  const onSubmit = (e) =>{
+  const onSubmit = (e) => {
     e.preventDefault();
-    var cliente_id = selectedCliente._id
-    
+    var cliente_id = selectedCliente._id;
+
     const cliente = {
       cliente_id,
       tipo_comentario,
@@ -19,8 +19,8 @@ export const AddComentario = () => {
       comentario,
     };
 
-    addComentario(cliente)
-  }
+    addComentario(cliente);
+  };
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -30,15 +30,15 @@ export const AddComentario = () => {
               <option value="1">Comentario</option>
               <option value="2">Atendimento</option>
             </select>
-          </div> 
-          <div className="col">
-            {tipo_comentario === '2' ? <input id="valor" type="number" className="form-control" value={valor} onChange={(e) => setValor(e.target.value)} placeholder="Valor"></input> : <></>}
-          </div> 
+          </div>
+          <div className="col">{tipo_comentario === "2" ? <input id="valor" type="number" className="form-control" value={valor} onChange={(e) => setValor(e.target.value)} placeholder="Valor"></input> : <></>}</div>
           <div className="col-12">
             <textarea id="comentario" className="form-control" value={comentario} onChange={(e) => setComentario(e.target.value)} required placeholder="Comentario"></textarea>
           </div>
         </div>
-        <button type="submit" className="btn btn-primary justify-right">Adicionar Comentario</button>
+        <button type="submit" className="btn btn-primary justify-right">
+          Adicionar Comentario
+        </button>
       </form>
     </div>
   );

@@ -1,3 +1,3 @@
 export function testeUtils(x) {
-  console.log('teste')
+  console.log("teste");
 }

@@ -5,5 +5,5 @@ export const Header = () => {
 };
 
 export const Login = () => {
-  return <h2>Login</h2>
-}
+  return <h2>Login</h2>;
+};

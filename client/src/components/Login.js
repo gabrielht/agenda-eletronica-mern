@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import * as firebase from "firebase";
 import GoogleButton from "react-google-button";
 import { STORAGE_KEY } from "../utils/auth";
@@ -35,15 +35,15 @@ export const Login = () => {
         Swal.fire({
           icon: "success",
           title: "Usuário criado com sucesso!",
-        });   
+        });
       })
       .catch((error) => {
-        console.error(error)
+        console.error(error);
         Swal.fire({
           icon: "error",
           title: "Oops...",
           text: `${error.message}`,
-        });   
+        });
       });
   };
 
@@ -64,7 +64,7 @@ export const Login = () => {
           icon: "error",
           title: "Oops...",
           text: "Login Inválido!",
-        });        
+        });
         console.error(error);
       });
   };
@@ -96,7 +96,7 @@ export const Login = () => {
 
           <div className="form-group col-md-12">
             <label htmlFor="email">Password</label>
-            <input id="SenhaLogin" className="form-control" type="password" name="" value={SenhaLogin} onChange={(e) => setSenhaLogin(e.target.value)} placeholder="Password" required minLength={6}/>
+            <input id="SenhaLogin" className="form-control" type="password" name="" value={SenhaLogin} onChange={(e) => setSenhaLogin(e.target.value)} placeholder="Password" required minLength={6} />
           </div>
 
           <div className="text-center">
