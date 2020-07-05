@@ -3,6 +3,10 @@ import {BrowserRouter as Router, Route} from "react-router-dom"
 import { Header } from "./components/Header";
 import { Login } from "./components/Login";
 import { GlobalProvider, GlobalContext } from "./context/GlobalState";
+import  history  from "./components/History";
+import PrivateRoute from "./components/PrivateRoute";
+import { BrowserRouter, withRouter, Redirect} from "react-router-dom"
+
 
 import "./App.css";
 import { Main } from "./components/Main";
@@ -12,17 +16,19 @@ function App() {
 
   return (
     <GlobalProvider>
-      <Router>
+      <BrowserRouter>
+      <Router history={history}>
       <div className="container">
         <div>
           <Route exact path='/login' component={Login} />
-          <Route exact path='/' component={Header}>
+          <PrivateRoute exact path='/' component={Header}>
             <Header />
               <Main />
-          </Route>
+          </PrivateRoute>
         </div>
       </div>
       </Router> 
+      </BrowserRouter>
     </GlobalProvider>
   );
 }

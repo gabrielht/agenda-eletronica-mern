@@ -5,7 +5,27 @@ const Cliente = require('../models/Cliente');
 // @access  Public
 exports.getClientes = async (req, res, next) => {
   try {
+
     const clientes = await Cliente.find();
+
+    return res.status(200).json({
+      success: true,
+      count: clientes.length,
+      data: clientes
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: 'Server Error'
+    });
+  }
+}
+
+
+exports.getClienteById = async (req, res, next) => {
+  try {
+    const { id } = req.params
+    const clientes = await Cliente.find({createdBy:id});
 
     return res.status(200).json({
       success: true,
@@ -25,7 +45,7 @@ exports.getClientes = async (req, res, next) => {
 // @access  Public
 exports.addCliente = async (req, res, next) => {
   try {
-    const { nome, email, telefone } = req.body;
+    const { nome, email, telefone, createdBy } = req.body;
 
     const cliente = await Cliente.create(req.body);
   

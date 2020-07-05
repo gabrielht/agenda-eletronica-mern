@@ -2,6 +2,11 @@ import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import * as firebase from 'firebase';
 import GoogleButton from 'react-google-button'
+import {STORAGE_KEY} from '../utils/auth';
+import history from './History'
+import { BrowserRouter, withRouter, Redirect, Route} from "react-router-dom"
+
+// const routeChange = useHistory()
 
 const config = {
     apiKey: "AIzaSyBJrCTtEEnBG3SPcZo4ArUnJQZD4J9QPMU",
@@ -34,37 +39,40 @@ export const Login = () => {
         console.log('Error');
         console.log(error);
       })
-      
-   
-      console.log(ClientData);
   }
 
   var login = function(){
-    // firebase.auth().tenantId = ‘TENANT_PROJECT_ID’;
-
-    // All future sign-in request now include tenant ID.
     firebase.auth().signInWithEmailAndPassword(EmailLogin, SenhaLogin)
       .then(function(result) {
-          console.log(result);
-        // result.user.tenantId should be ‘TENANT_PROJECT_ID’.
+        localStorage.setItem(STORAGE_KEY, 'KiltzFezFuncionar');
+        history.push('/')
+        window.location.reload(false)
       }).catch(function(error) {
-        // Handle error.
-        console.log(error);
+        alert('Login Invalido')
       });
   }
 
   var RegisterWithGoogle = function(){
+    // localStorage.removeItem('UserInfo');
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('profile');
     provider.addScope('email');
     firebase.auth().signInWithPopup(provider).then(function(result) {
-    var token = result.credential.accessToken;
-    var user = result.user;
+      var token = result.credential.accessToken;
+      var user = result.user;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+      history.push('/')
+      console.log(user.email);
+      console.log('-----');
+      console.log(result);
+      window.location.reload(false)
     });
   }
 
 
     return (
+
+      <BrowserRouter >
         <form class="form-signin" onSubmit={Register}>   
         <div className="form-row col-md-12">
           <div className="form-group col-md-6">
@@ -84,5 +92,6 @@ export const Login = () => {
         </button>
         <GoogleButton onClick={() => {  RegisterWithGoogle() }}/>
       </form>
+      </BrowserRouter>
     )
 }

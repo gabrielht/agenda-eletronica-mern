@@ -14,6 +14,10 @@ const ClienteSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Por favor adicione o telefone']
   },
+  createdBy:{
+    type: String,
+    required: [true, 'Tu nao ta logado irmao ????']
+  },
   createdAt: {
     type: Date,
     default: Date.now
