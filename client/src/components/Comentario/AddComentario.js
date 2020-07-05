@@ -43,12 +43,12 @@ export const AddComentario = () => {
             <textarea id="comentario" className="form-control" value={comentario} onChange={(e) => setComentario(e.target.value)} required placeholder="Comentario"></textarea>
           </div>
         </div>
+        <div className="d-flex justify-content-end">
+          <button type="submit" className="btn btn-primary">
+            Adicionar Comentario
+          </button>
+        </div>
       </form>
-      <div className="d-flex justify-content-end">
-        <button type="submit" className="btn btn-primary">
-          Adicionar Comentario
-        </button>
-      </div>
     </div>
   );
 };
