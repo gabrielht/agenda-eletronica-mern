@@ -4,13 +4,12 @@ import { ComentarioList } from "./ComentarioList";
 import { GlobalContext } from "../context/GlobalState";
 import { STORAGE_KEY } from "../utils/auth";
 import  history from "./History";
-import { BrowserRouter, withRouter, Redirect} from "react-router-dom"
+import { BrowserRouter} from "react-router-dom"
 
 export const Main = () => {
   const { selectedCliente } = useContext(GlobalContext);
 
   var SignOut = function(){
-    console.log('----')
     localStorage.removeItem(STORAGE_KEY)
     history.push('/login')
     window.location.reload(false)
