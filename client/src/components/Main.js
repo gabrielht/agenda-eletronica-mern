@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { ClienteList } from "./ClienteList";
-import { ComentarioList } from "./ComentarioList";
+import { ClienteList } from "./Cliente/ClienteList";
+import { ComentarioList } from "./Comentario/ComentarioList";
 import { GlobalContext } from "../context/GlobalState";
 import { STORAGE_KEY } from "../utils/auth";
 import history from "./History";
@@ -17,6 +17,7 @@ export const Main = () => {
 
   return (
     <BrowserRouter>
+    <button onClick={SignOut} className="btn btn-outline-danger">Sign Out</button>
       <div>
         <div className="row">
           <div className="col-sm-12 col-md-4">
@@ -24,7 +25,7 @@ export const Main = () => {
           </div>
           <div className="col-sm-12 col-md-8">{selectedCliente ? <ComentarioList key={selectedCliente._id} cliente={selectedCliente} /> : <></>}</div>
         </div>
-        <button onClick={SignOut}>Sign Out</button>
+        
       </div>
     </BrowserRouter>
   );

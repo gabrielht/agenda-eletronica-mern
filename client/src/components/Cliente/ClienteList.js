@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../context/GlobalState";
+import { GlobalContext } from "../../context/GlobalState";
 import { Cliente } from "./Cliente";
 import { AddCliente } from "./AddCliente";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,12 +22,12 @@ export const ClienteList = () => {
   return (
     <div>
       <h3>
-        Clientes{" "}
+        Clientes
         <button type="button" onClick={toggle} className="btn btn-success">
           <FontAwesomeIcon icon={isOpen ? faMinus : faPlus} />
         </button>
       </h3>
-      <Collapse isOpen={isOpen}>
+      <Collapse isOpen={isOpen} className="border-bottom border-dark pb-2 mb-2">
         <AddCliente />
       </Collapse>
       <ul>
