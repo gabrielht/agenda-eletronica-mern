@@ -1,7 +1,7 @@
 # Agenda Eletronica TCC (MERN)
 
 Backend em Express e MongoDB (Atlas) de uma agenda eletronica com clientes e comentarios. 
-Frontend em React. Ainda em progresso :hammer:
+Frontend em React.
 
 ```
 edit config.env
