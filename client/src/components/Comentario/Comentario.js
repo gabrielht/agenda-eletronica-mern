@@ -13,7 +13,10 @@ export const Comentario = ({ comentario }) => {
           <span>
             <b>{createdAt}</b>
           </span>
-          <span className="money">R$ {comentario.valor > 0 ? numeroComVirgula(Math.abs(comentario.valor)) : <></>}</span>
+          {comentario.valor > 0 ? 
+          <span className="money">R$ {numeroComVirgula(Math.abs(comentario.valor))}</span>  
+          : <></>}
+          
         </CardHeader>
         <CardBody>
           <div className="content">"{comentario.comentario}"</div>
